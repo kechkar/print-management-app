@@ -1,0 +1,1 @@
+//Defines department-related API endpoints
