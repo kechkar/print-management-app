@@ -3,6 +3,7 @@ const express = require('express');
 const connectDB = require('./backend/config/db');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const path = require("path");
 const authRoutes = require('./backend/routes/authRoutes');
 const printRequestRoutes = require('./backend/routes/printRequestRoutes.js');
 const trackingRoutes = require("./backend/routes/trackingRoutes.js");
