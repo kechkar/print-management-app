@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/Login/LoginPage';
 import LoginPageAdmin from './pages/admin/LoginPageAdmin';
@@ -7,7 +7,7 @@ import CreateDepartment from './pages/admin/CreateDepartement';
 import CreatePrinter from './pages/admin/CreatePrinter';
 import CreateTeacher from './pages/Chef/CreateTeacher';
 import Home from './pages/home/Home';
-import { AuthProvider } from './pages/context/AuthContext'; // Créez ce fichier (voir ci-dessous)
+import { AuthProvider } from './pages/context/AuthContext';
 import Dashboard from './pages/Chef/dashboard';
 import CreatePrintRequest from './pages/Enseignant/CreatePrintRequest';
 import TeacherDashboard from './pages/Enseignant/TeacherDashboard';
@@ -17,11 +17,15 @@ import ShowRequestChef from './pages/Chef/ShowRequestChef';
 import PrinterDashboard from './pages/Imprimeur/PrinterDashboard';
 import ShowRequestPrinter from './pages/Imprimeur/ShowRequestPrinter'; 
 import ShowRequestAdmin from './pages/admin/ShowPrintRequestAdmin';  
+
 function App() {
   return (
     <AuthProvider>
-      
+      <Router>
         <Routes>
+          {/* Default route → redirect to /login */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
+
           <Route path="/login" element={<LoginPage />} />
           <Route path="/loginAdmin" element={<LoginPageAdmin />} />
           <Route path="/Home" element={<Home />} />
@@ -38,9 +42,10 @@ function App() {
           <Route path="/PrintRequestPrinter/:id" element={<ShowRequestPrinter />} />
           <Route path="/PrintRequestAdmin/:id" element={<ShowRequestAdmin />} />
         </Routes>
-      
+      </Router>
     </AuthProvider>
   );
 }
 
 export default App;
+
