@@ -43,6 +43,12 @@ connectDB().then(() => {
     console.error("Erreur lors du démarrage du serveur :", err);
 });
 
+app.use(express.static(path.join(__dirname, "frontend", "react", "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "react", "dist", "index.html"));
+});
+
 // Gérer la fermeture propre du serveur
 process.on('SIGINT', async () => {
     console.log("Serveur arrêté.");
