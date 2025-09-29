@@ -4,10 +4,6 @@ const connectDB = require('./backend/config/db');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require("path");
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const authRoutes = require('./backend/routes/authRoutes');
 const printRequestRoutes = require('./backend/routes/printRequestRoutes.js');
 const trackingRoutes = require("./backend/routes/trackingRoutes.js");
